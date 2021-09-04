@@ -163,6 +163,7 @@
 			function showAlertAdapter() {
 				return function(chatBot){
 					chatBot.subscriptions.onDisplayUserMessage(function(messageData, next) {
+						alert(messageData);
 						var conversationWindowData = {
 							message:'Here’s your alert'
 						};
