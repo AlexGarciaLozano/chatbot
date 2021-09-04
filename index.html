@@ -158,15 +158,8 @@
 				};
 			}
 			
-			function showColorLink(color) {
-				alert(color);
-				console.log(color);
-				console.log(chatBot);
-				var conversationWindowData = {
-					type:'answer',
-					message:'Testing'
-				};
-				chatBot.actions.displayChatbotMessage(conversationWindowData);
+			function showColorLink(param) {
+				alert(param.color);
 			}
 		</script>
         <!-- Inbenta initialization and configuration. -->
