@@ -163,15 +163,13 @@
 			function showAlertAdapter() {
 				return function(chatBot){
 					chatBot.subscriptions.onDisplayUserMessage(function(messageData, next) {
-						alert(messageData.message);
 						var conversationWindowData = {
 							message:'Here’s your alert'
 						};
 						if (messageData.message == 'Show me an alert') {
 							chatBot.actions.displaySystemMessage(conversationWindowData);
-						} else {
-							return next();
 						}
+						return next();
 					});
 				};
 			}
