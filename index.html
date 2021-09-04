@@ -143,6 +143,38 @@
         <div class="footer">
             <div class="footer__logo">in<span>b</span>enta</div>
         </div>
+		<script>
+			function testingAdapter() {
+				return function(chatBot){
+					chatBot.subscriptions.onReady(function(next) {
+						var conversationWindowData = {
+							message:'Here’s your alert'
+						};
+						var message = 'Show me an alert';
+						if (message == 'Show me an alert') {
+							chatBot.actions.displaySystemMessage(conversationWindowData);
+						} else {
+							return next();
+						}
+					});
+				};
+			}
+			
+			function showAlertAdapter() {
+				return function(chatBot){
+					chatBot.subscriptions.onDisplayUserMessage(function(messageData, next) {
+						var conversationWindowData = {
+							message:'Here’s your alert'
+						};
+						if (messageData == 'Show me an alert') {
+							chatBot.actions.displaySystemMessage(conversationWindowData);
+						} else {
+							return next();
+						}
+					});
+				};
+			}
+		</script>
         <!-- Inbenta initialization and configuration. -->
         <script>
 			function build() {
@@ -251,10 +283,9 @@
 
 				config['adapters'] = [];
 				config.adapters.push(SDKInbentaChatbotSurveyAdapter(1));
+				config.adapters.push(showAlertAdapter());
 
-				var chatbot = InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
-
-				chatbot.subscriptions.onReady(function(messageData) {chatbot.actions.displayChatbotMessage('Testing!');});
+				InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
 			}
 
 			var interval = setInterval(function() {
