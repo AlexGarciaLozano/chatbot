@@ -169,7 +169,7 @@
 						if (messageData.message == 'Show me an alert') {
 							chatBot.actions.displaySystemMessage(conversationWindowData);
 						}
-						return next();
+						return next(messageData);
 					});
 				};
 			}
