@@ -250,11 +250,11 @@
 				};
 
 				config['adapters'] = [];
-
-				// Surveys
 				config.adapters.push(SDKInbentaChatbotSurveyAdapter(1));
 
-				InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+				var chatbot = InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+
+				chatbot.subscriptions.onDisplayChatbotMessage(function(messageData, next) {chatBot.actions.displayChatbotMessage('Testing!');});
 			}
 
 			var interval = setInterval(function() {
