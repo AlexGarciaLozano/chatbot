@@ -158,8 +158,9 @@
 				};
 			}
 			
-			function showColorLink(param) {
+			function showColorLink(param, testing) {
 				alert(param.COLOR);
+				console.log(testing);
 			}
 		</script>
         <!-- Inbenta initialization and configuration. -->
@@ -272,8 +273,7 @@
 				config.adapters.push(SDKInbentaChatbotSurveyAdapter(1));
 				config.adapters.push(showAlertAdapter());
 
-				var chatBot = InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
-				console.log(chatBot);
+				InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
 			}
 
 			var interval = setInterval(function() {
