@@ -157,7 +157,8 @@
 			}
 			
 			function showColorLink(params) {
-				bot.actions.displaySystemMessage({ message: params.COLOR });
+				var url = 'https://www.google.com/search?q=' + 'black' + '&tbm=isch';
+				bot.actions.displayChatbotMessage({ type: 'answer', message: url });
 			}
 		</script>
         <!-- Inbenta initialization and configuration. -->
@@ -274,7 +275,6 @@
 				
 				APIPromise.then((chatbotAPI) => {
 					bot = chatbotAPI;
-					bot.actions.displaySystemMessage({ message: 'Testing!!!' });
 				});
 			}
 
