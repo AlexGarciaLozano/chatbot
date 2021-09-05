@@ -144,6 +144,7 @@
             <div class="footer__logo">in<span>b</span>enta</div>
         </div>
 		<script>
+			var bot;
 			function showAlertAdapter() {
 				return function(chatbot){
 					chatbot.subscriptions.onDisplayUserMessage(function(messageData, next) {
@@ -153,6 +154,11 @@
 						return next(messageData);
 					});
 				};
+			}
+			
+			function showColorLink(params) {
+				var url = 'https://www.google.com/search?q=' + params.COLOR + '&tbm=isch';
+				bot.actions.displayChatbotMessage({ type: 'answer', message: url });
 			}
 		</script>
         <!-- Inbenta initialization and configuration. -->
@@ -265,7 +271,11 @@
 				config.adapters.push(SDKInbentaChatbotSurveyAdapter(1));
 				config.adapters.push(showAlertAdapter());
 
-				InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+				APIPromise = InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+				
+				APIPromise.then((chatbotAPI) => {
+					bot = chatbotAPI;
+				});
 			}
 
 			var interval = setInterval(function() {
