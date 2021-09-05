@@ -144,6 +144,7 @@
             <div class="footer__logo">in<span>b</span>enta</div>
         </div>
 		<script>
+			var chatbotGlobal;
 			function showAlertAdapter() {
 				return function(chatbot){
 					chatbot.subscriptions.onDisplayUserMessage(function(messageData, next) {
@@ -157,7 +158,7 @@
 			
 			function showColorLink(params) {
 				alert(params.COLOR);
-				chatbotAPI.actions.displaySystemMessage({ message: params.COLOR });
+				chatbotGlobal.actions.displaySystemMessage({ message: 'Testing Hard' });
 			}
 		</script>
         <!-- Inbenta initialization and configuration. -->
@@ -275,6 +276,7 @@
 				APIPromise.then((chatbotAPI) => {
 					console.log(chatbotAPI);
 					chatbotAPI.actions.displaySystemMessage({ message: 'Testing!!!' });
+					chatbotGlobal = chatbotAPI;
 				});
 			}
 
