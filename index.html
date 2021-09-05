@@ -272,7 +272,8 @@
 				config.adapters.push(SDKInbentaChatbotSurveyAdapter(1));
 				config.adapters.push(showAlertAdapter());
 
-				InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+				var chatBot = InbentaChatbotSDK.buildWithDomainCredentials(authorization, config);
+				console.log(chatBot);
 			}
 
 			var interval = setInterval(function() {
